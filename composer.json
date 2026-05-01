@@ -1,0 +1,8 @@
+{
+    "name": "ksfraser/ksf_fa_subscriptions",
+    "description": "FA module: On-demand recurring billing with usage tracking",
+    "require-dev": {
+        "phpunit/phpunit": "^10",
+        "ksfraser/famock": "*"
+    }
+}
