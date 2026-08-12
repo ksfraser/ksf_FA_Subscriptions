@@ -1,7 +1,7 @@
 -- Subscriptions module database schema for FrontAccounting
 
 -- Subscription templates (on-demand)
-CREATE TABLE IF NOT EXISTS `fa_subscription_templates` (
+CREATE TABLE IF NOT EXISTS `0_subscription_templates` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
     `description` TEXT,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `fa_subscription_templates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Customer subscriptions
-CREATE TABLE IF NOT EXISTS `fa_subscriptions` (
+CREATE TABLE IF NOT EXISTS `0_subscriptions` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `customer_id` INT(11) NOT NULL,
     `template_id` INT(11) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `fa_subscriptions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- On-demand usage records
-CREATE TABLE IF NOT EXISTS `fa_subscription_usage` (
+CREATE TABLE IF NOT EXISTS `0_subscription_usage` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `subscription_id` INT(11) NOT NULL,
     `resource_type` VARCHAR(50) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `fa_subscription_usage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Subscription invoices generated
-CREATE TABLE IF NOT EXISTS `fa_subscription_invoices` (
+CREATE TABLE IF NOT EXISTS `0_subscription_invoices` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `subscription_id` INT(11) NOT NULL,
     `invoice_id` INT(11) NOT NULL,
@@ -61,6 +61,3 @@ CREATE TABLE IF NOT EXISTS `fa_subscription_invoices` (
     PRIMARY KEY (`id`),
     KEY `subscription_id` (`subscription_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Module version
-INSERT INTO `fa_modules` (`name`, `version`, `enabled`, `installed`) VALUES ('Subscriptions', '1.0.0', 1, NOW()) ON DUPLICATE KEY UPDATE `version` = '1.0.0';
